@@ -19,6 +19,7 @@ impl Search {
                 .required(false))
             .arg(Arg::with_name("TIME")
                 .help("The length of the timer in seconds")
+                .default_value("0")
                 .required(true));
 
         // Parse each parameter
