@@ -1,5 +1,4 @@
 /target
-/Cargo.lock
 /.idea/modules.xml
 /.idea/stm32_timer_calculator.iml
 /.idea/vcs.xml
