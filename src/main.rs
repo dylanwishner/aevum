@@ -1,6 +1,6 @@
 mod search;
 
-use search::Search;
+use search::{Search, TimeMode};
 #[allow(unused_imports)]
 use std::panic;
 
@@ -10,13 +10,19 @@ fn main() {
     panic::set_hook(Box::new(|_info| {}));
 
     let search = Search::new();
-    let target: u32 = search.clock / (1 / search.timer_period);
+    let multiplier = match search.time_unit {
+        TimeMode::Microseconds => 1000000,
+        TimeMode::Milliseconds => 1000,
+        TimeMode::Seconds => 1,
+    };
+
+    let target: u32 = search.clock * search.timer_period / multiplier;
 
     find_matches(target);
 }
 
 fn find_matches(target: u32) {
-    for i in 1u64..2_u64.pow(32) {
+    for i in 1u64..2_u64.pow(16) {
         for j in 1u64..2_u64.pow(16) {
             if i * j == target as u64 {
                 print_match(i - 1, j - 1);

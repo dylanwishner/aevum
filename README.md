@@ -4,7 +4,7 @@ A CLI utility to calculate timer register values for STM32 microcontrollers. Giv
 ## Usage
 Run aevum with `./aevum --help` for more information.
 
-When using aevum, you must always provide the desired period of time to run the timer. By default the units are in seconds. The program assumes that the prescaler is a 16-bit register, and the auto-reload is a 32-bit register.
+When using aevum, you must always provide the desired period of time to run the timer. By default the units are in seconds. The program assumes that the prescaler and auto-reload registers are both 16-bit.
 
 ### Options
 * `-h, --help`: Display help information
@@ -23,7 +23,8 @@ $ cargo build
 ```
 
 ## To-do List
-- [ ] Support alternative time units (milliseconds, nanoseconds, etc.)
+- [ ] Support alternative time units (milliseconds, microseconds, etc.)
 - [ ] Specify how many possibilities to calculate (or only output first match to reduce run time)
 - [ ] Allow the default parameters to be changed in case you frequently work with the same MCU
 - [ ] Better integer parsing to allow for 8,000,000 or 8_000_000 style integers
+- [ ] Handle cases where the values exceed the 16-bit maximum (using clock dividers)
