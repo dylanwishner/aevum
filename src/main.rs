@@ -16,7 +16,7 @@ fn main() {
         TimeMode::Seconds => 1,
     };
 
-    let target: u32 = search.clock * search.timer_period / multiplier;
+    let target: u32 = search.clock / (1 / search.timer_period / multiplier);
 
     find_matches(target);
 }

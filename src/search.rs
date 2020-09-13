@@ -7,7 +7,7 @@ pub struct Search {
 }
 
 impl Search {
-    // TODO replace  each arg with custom validators
+    // TODO replace each arg with custom validators
     #[allow(unused)]    // Silence unused variable (time_unit) warnings even though its read, possible rustc issue?
     pub fn new() -> Search {
         let app = App::new("STM32 Timer Calculator")

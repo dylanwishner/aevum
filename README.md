@@ -9,9 +9,16 @@ When using aevum, you must always provide the desired period of time to run the 
 ### Options
 * `-h, --help`: Display help information
 * `-c, --clock`: Specify the timer clock speed
+* `-u, --microseconds`: Sets the desired time period to microseconds
+* `-m, --milliseconds`: Sets the desired time period to milliseconds
+* `-s, --seconds`: Sets the desired time period to seconds (default)
 
 ### Examples
-`aevum 10 -c 16000000`
+Sets a search for a 10 second timer with a 16MHz timer clock  
+`aevum 10 -c 16000000`      
+
+Sets a search for 20 milliseconds with a 8MHz timer clock  
+`aevum 20 -m -c 8000000` 
 
 ## Installation
 Precompiled binaries are not yet available. You can compile the project 
