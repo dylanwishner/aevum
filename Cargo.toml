@@ -1,8 +1,18 @@
 [package]
-name = "aevum"
-version = "0.1.0"
 authors = ["Dylan Wishner <dylanwishner@gmail.com>"]
+categories = ["command-line-utilities", "development-tools", "embedded"]
+description = "A CLI utility to calculate timer register values for STM32 microcontrollers."
 edition = "2018"
+keywords = ["arm", "cli", "cortex-m", "stm32", "timer"]
+license = "MIT"
+name = "aevum"
+repository = "https://github.com/dylanwishner/aevum"
+version = "0.1.0"
+
+exclude = [
+    ".idea/*",
+    ".DS_Store"
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
