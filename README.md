@@ -25,7 +25,13 @@ Sets a search for 10 microseconds with the default clock value and only calculat
 `aevum 10 -u -r 2`
 
 ## Installation
-Precompiled binaries are not yet available. You can compile the project 
+Aevum can be installed via cargo:
+
+`$ cargo install aevum`
+
+Pre-built binaries are available [here](https://github.com/dylanwishner/aevum/releases), but these binaries are cross-compiled and typically aren't tested.
+
+Alternatively, you can compile the project 
 from source if your machine has [Rust](https://www.rust-lang.org/tools/install).
 ```
 $ git clone https://github.com/dylanwishner/aevum.git
