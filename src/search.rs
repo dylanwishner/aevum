@@ -12,7 +12,7 @@ impl Search {
     #[allow(unused)] // Silence unused variable (time_unit) warnings even though its read, possible rustc issue?
     pub fn new() -> Search {
         let app = App::new("Aevum")
-            .version("0.1.0")
+            .version("0.1.1")
             .author("Dylan Wishner")
             .about("Determine the prescaler and auto-reload register values for a specified period of time for STM32 MCU timer peripherals")
             .arg(Arg::with_name("CLOCK SPEED")

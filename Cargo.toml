@@ -7,7 +7,7 @@ keywords = ["arm", "cli", "cortex-m", "stm32", "timer"]
 license = "MIT"
 name = "aevum"
 repository = "https://github.com/dylanwishner/aevum"
-version = "0.1.0"
+version = "0.1.1"
 
 exclude = [
     ".idea/*",
