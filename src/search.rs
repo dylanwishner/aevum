@@ -11,7 +11,7 @@ impl Search {
     // TODO replace each arg with custom validators
     #[allow(unused)] // Silence unused variable (time_unit) warnings even though its read, possible rustc issue?
     pub fn new() -> Search {
-        let app = App::new("STM32 Timer Calculator")
+        let app = App::new("Aevum")
             .version("0.1.0")
             .author("Dylan Wishner")
             .about("Determine the prescaler and auto-reload register values for a specified period of time for STM32 MCU timer peripherals")
@@ -24,7 +24,7 @@ impl Search {
                 .takes_value(true))
             .arg(Arg::with_name("TIME")
                 .help("The length of the timer (default is in seconds")
-                .default_value("10")
+                // .default_value("10")
                 .required(true)
                 .takes_value(true))
             .arg(Arg::with_name("EN_MICROSECONDS")
