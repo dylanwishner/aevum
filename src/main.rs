@@ -1,3 +1,4 @@
+mod cli;
 mod search;
 
 use search::{Search, TimeMode};
