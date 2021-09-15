@@ -1,52 +1,25 @@
-mod cli;
-mod search;
+use crate::app::App;
+use crate::event::handle_key_event;
+use crate::ui::draw;
+use crossterm::event::{read, Event};
+use std::io::stdout;
+use tui::backend::CrosstermBackend;
+use tui::Terminal;
 
-use search::{Search, TimeMode};
-#[allow(unused_imports)]
-use std::panic;
-use std::process::exit;
+mod app;
+mod event;
+mod ui;
 
 fn main() {
-    // Suppresses panic output to stdout if in release mode
-    #[cfg(not(debug_assertions))]
-    panic::set_hook(Box::new(|_info| {}));
+    let mut app = App::new();
+    let mut terminal = Terminal::new(CrosstermBackend::new(stdout())).unwrap();
 
-    let search = Search::new();
+    loop {
+        draw(&mut terminal, &mut app);
 
-    let multiplier = match search.time_unit {
-        TimeMode::Microseconds => 1000000,
-        TimeMode::Milliseconds => 1000,
-        TimeMode::Seconds => 1,
-    };
-
-    let target: u32 = (search.clock as f32
-        / (1_f32 / (search.timer_period as f32 / multiplier as f32) as f32))
-        as u32;
-
-    find_matches(target, &search);
-}
-
-fn find_matches(target: u32, search: &Search) {
-    let mut num_matches = 0;
-
-    // Print target value if in debug mode
-    #[cfg(debug_assertions)]
-    println!("Searching for target: {}", target);
-
-    for i in 1u64..2_u64.pow(16) {
-        for j in 1u64..2_u64.pow(16) {
-            if i * j == target as u64 {
-                num_matches += 1;
-                print_match(i - 1, j - 1);
-
-                if num_matches == search.num_results {
-                    exit(0);
-                }
-            }
+        match read().unwrap() {
+            Event::Key(event) => handle_key_event(event, &mut app),
+            _ => {}
         }
     }
-}
-
-fn print_match(arr: u64, psc: u64) {
-    println!("Prescaler: {}\tAuto-Reload: {}", psc, arr);
 }
